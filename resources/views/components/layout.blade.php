@@ -37,7 +37,7 @@
           </a>
         </div>
       </header>
-      <main>
+      <main class="space-y-8 px-10">
         {{ $slot }}
       </main>
     </body> 
