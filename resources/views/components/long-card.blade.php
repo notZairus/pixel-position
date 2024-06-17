@@ -1,6 +1,6 @@
 @props(['job'])
 
-<div class="flex space-x-5 bg-white/10 box-border p-3 rounded-lg border border-transparent hover:border-blue-700 group">
+<a {{ $attributes->merge(['class' => "flex space-x-5 bg-white/10 box-border p-3 rounded-lg border border-transparent hover:border-blue-700 group"])}}>
     <div>
         <x-employer-logo width="90"></x-employer-logo>
     </div>
@@ -16,4 +16,4 @@
         @endforeach
 
     </div>
-</div>
+</a>

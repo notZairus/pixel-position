@@ -23,19 +23,25 @@
         </div>
 
         <div>
-          <ul class="flex space-x-6 text-white text-xs font-semibold">
-            <a href="/"><li>Jobs</li></a>
-            <a href="/"><li>Create</li></a>
-            <a href="/"><li>Salaries</li></a>
-            <a href="/"><li>Companies</li></a>
+          <ul class="flex space-x-6 text-white text-xs items-center">
+            <a href="/" class="{{request()->is('/') ? "text-blue-500 font-extrabold text-sm" : "font-normal"}} hover:text-blue-300"><li>Jobs</li></a>
+            <a href="/" class="{{request()->is('/create') ? "text-blue-500 font-extrabold text-sm" : "font-normal"}} hover:text-blue-300"><li>Create</li></a>
+            <a href="/" class="{{request()->is('/salaries') ? "text-blue-500 font-extrabold text-sm" : "font-normal"}} hover:text-blue-300"><li>Salaries</li></a>
+            <a href="/" class="{{request()->is('/companies') ? "text-blue-500 font-extrabold text-sm" : "font-normal"}} hover:text-blue-300"><li>Companies</li></a>
           </ul>
         </div>
 
-        <div>
-          <a {{ $attributes }} class="flex justify-center items-center space-x-2">
-            <span class="bg-blue-700 w-2 h-2">  </span>
-            <p class="text-sm text-white font-bold"> Post a Job </p>
-          </a>
+        <div class="flex space-x-2">
+
+          @guest
+            <x-anchor-btn href="/">Login</x-anchor-btn>
+            <x-anchor-btn href="/">Register</x-anchor-btn>
+          @endguest
+
+          @auth
+            <x-anchor-btn href="/">Logout</x-anchor-btn>
+          @endauth
+
         </div>
       </header>
       <main class="space-y-10 px-10">
