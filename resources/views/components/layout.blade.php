@@ -7,13 +7,14 @@
         <title>Pixel Positions</title>
 
         <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.bunny.net"><link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         @vite(['resources/css/app.css'])
 
     </head>
-    <body class="font-sans antialiase text-white bg-black px-5">
-      <header class="bg-black py-3 flex justify-between items-center border-b-2 border-white/35">
+    <body class="antialiase text-white bg-black px-5 pb-10 font-Hanken-grotesk">
+      <header class="bg-black py-3 flex justify-between items-center">
         <div>
           <a href="/">
             <img src="{{ Vite::asset('resources/images/logo.svg')}}" alt="logo">
@@ -37,7 +38,7 @@
           </a>
         </div>
       </header>
-      <main class="space-y-8 px-10">
+      <main class="space-y-10 px-10">
         {{ $slot }}
       </main>
     </body> 

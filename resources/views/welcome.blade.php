@@ -1,34 +1,69 @@
 <x-layout>
-    <section  class="mt-8">
+    <section class="mt-10 flex flex-col items-center">
+        <h1 class="text-2xl font-bold ">Let's Find You a Great Job!</h1>
+        <input type="text" placeholder="I'm looking for..." class="text-md font-light w-2/5 border border-white/20 bg-white/10 rounded-xl px-3 py-1 outline-none mt-4">
+    </section>
+    <section>
         <x-heading>Top Jobs</x-heading>
-        <div class="flex space-x-7 px-5">
-            <x-square-card>
-                <x-slot name="company">Meralco</x-slot>
-                <x-slot name="job_title">Full stack Laravel Delveloper</x-slot>
-                <x-slot name="job_type">Full time</x-slot>
-                <x-slot name="salary">Php 60,000</x-slot>
-            </x-square-card>
-            <x-square-card>
-                <x-slot name="company">Accenture</x-slot>
-                <x-slot name="job_title">UI/UX Developer</x-slot>
-                <x-slot name="job_type">Part time</x-slot>
-                <x-slot name="salary">Php 30,000</x-slot>
-            </x-square-card>
-            <x-square-card>
-                <x-slot name="company">Norzagaray College</x-slot>
-                <x-slot name="job_title">IT Instructor</x-slot>
-                <x-slot name="job_type">Full time</x-slot>
-                <x-slot name="salary">Php 40,000</x-slot>
-            </x-square-card>
+        <div class="gap-7 px-5 grid grid-cols-3">
+
+            @foreach ($featuredJobs as $job)
+                <x-square-card>
+                    <x-slot name="company">{{ $job->employer->name }}</x-slot>
+                    <x-slot name="job_title">{{ $job->title }}</x-slot>
+                    <x-slot name="job_type">{{ $job->schedule }}</x-slot>
+                    <x-slot name="salary">{{ $job->salary }}</x-slot>
+                </x-square-card>
+            @endforeach
+        
         </div>
     </section>
     <section>
         <x-heading>Tags</x-heading>
-        <div class="px-5">
-            <div class="h-5 w-full bg-white/10 rounded"></div>
+        <div class="px-5 flex flex-wrap gap-1 text-sm">
+            <x-tag>Frontend</x-tag>
+            <x-tag>Frontend</x-tag>
+            <x-tag>Frontend</x-tag>
+            <x-tag>Frontend</x-tag>
+            <x-tag>Frontend</x-tag>
+            <x-tag>Frontend</x-tag>
+            <x-tag>Frontend</x-tag>
+            <x-tag>Backend</x-tag>
+            <x-tag>Backend</x-tag>
+            <x-tag>Backend</x-tag>
+            <x-tag>Backend</x-tag>
+            <x-tag>Backend</x-tag>
+            <x-tag>Backend</x-tag>
+            <x-tag>Backend</x-tag>
+            <x-tag>API</x-tag>
+            <x-tag>API</x-tag>
+            <x-tag>API</x-tag>
+            <x-tag>API</x-tag>
+            <x-tag>API</x-tag>
+            <x-tag>API</x-tag>
+            <x-tag>API</x-tag>
+            <x-tag>API</x-tag>
+            <x-tag>Managing</x-tag>
+            <x-tag>Managing</x-tag>
+            <x-tag>Managing</x-tag>
+            <x-tag>Managing</x-tag>
+            <x-tag>Managing</x-tag>
+            <x-tag>Managing</x-tag>
         </div>
     </section>
     <section>
-        
+        <x-heading>Find Jobs</x-heading>
+        <div class="px-5 space-y-4">
+
+            @foreach ($unfeaturedJobs as $job)
+                <x-long-card>
+                    <x-slot name="employer">{{ $job->employer->name }}</x-slot>
+                    <x-slot name="job_title">{{ $job->title }}</x-slot>
+                    <x-slot name="schedule">{{ $job->schedule }}</x-slot>
+                    <x-slot name="salary">{{ $job->salary }}</x-slot>
+                </x-long-card>
+            @endforeach
+
+        </div>
     </section>
 </x-layout>

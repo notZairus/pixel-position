@@ -5,7 +5,14 @@ export default {
     "./resources/**/*.js"
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        "Hanken-grotesk": ['Hanken Grotesk', 'sans-serif']
+      },
+      fontSize: {
+        "2xs": "10px"
+      }
+    },
   },
   plugins: [],
 }
