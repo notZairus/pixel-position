@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,12 +34,15 @@
         <div class="flex space-x-2">
 
           @guest
-            <x-anchor-btn href="/">Login</x-anchor-btn>
-            <x-anchor-btn href="/">Register</x-anchor-btn>
+            <x-anchor-btn href="/login">Sign In</x-anchor-btn>
+            <x-anchor-btn href="/register">Register</x-anchor-btn>
           @endguest
 
           @auth
-            <x-anchor-btn href="/">Logout</x-anchor-btn>
+            <form action="/logout" method="post">
+              @csrf
+              <x-anchor-btn type="btn">Logout</x-anchor-btn>
+            </form>
           @endauth
 
         </div>

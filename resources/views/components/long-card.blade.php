@@ -9,7 +9,7 @@
         <p class="font-bold text-xl group-hover:text-blue-400">{{ $job->title }}</p>
         <p class="text-sm text-gray-400">{{ $job->schedule }}: {{ $job->salary }}</p>
     </div>
-    <div class="flex items-start max-w-40 space-x-1 text-xs">
+    <div class="flex items-start space-x-1 text-xs">
     
         @foreach ($job->tags as $tag)
             <x-tag>{{$tag->name}}</x-tag>
