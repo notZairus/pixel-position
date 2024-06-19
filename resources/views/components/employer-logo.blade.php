@@ -1,3 +1,8 @@
-@props(['width' => "90"])
+@props(['job'])
 
-<img src="http://picsum.photos/seed/{{ rand(123, 2131) }}/{{ $width }}" alt="wasedsad" class="rounded-lg">
+@php
+    $path = 'storage/' . $job->employer->logo;
+@endphp
+
+
+<img {{$attributes}} src="{{ url($path) }}" alt="employer-logo" class="rounded-lg">

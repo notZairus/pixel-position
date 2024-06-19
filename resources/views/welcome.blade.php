@@ -18,7 +18,9 @@
         <div class="px-5 flex flex-wrap gap-1 text-sm">
 
             @foreach ($tags as $tag)
-                <x-tag>{{ $tag->name }}</x-tag>
+                <a href="/tags/{{$tag->name}}">
+                    <p class="bg-white/10 px-2 py-0 rounded-full"> {{$tag->name}} </p>
+                </a>
             @endforeach
 
         </div>

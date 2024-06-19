@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Job;
 use App\Models\SessionController;
@@ -12,11 +13,11 @@ Route::get('/', function ()
         return redirect('/login');
     }
     
-    $featuredJobs = Job::with('employer')->where('featured', 1)->get();
-    $unfeaturedJobs = Job::with('employer')->where('featured', 0)->get();
+    $featuredJobs = Job::with('employer')->get()->groupBy('featured');
+
     $tags = Tag::all();
 
-    return view('welcome', ['featuredJobs' => $featuredJobs, 'unfeaturedJobs' => $unfeaturedJobs, 'tags' => $tags]);
+    return view('welcome', ['featuredJobs' => $featuredJobs[1], 'unfeaturedJobs' => $featuredJobs[0], 'tags' => $tags]);
 });
 
 
@@ -30,3 +31,7 @@ Route::post('/register', [RegisterController::class, 'create']);
 Route::get('/login', [SessionController::class, 'index']);
 Route::post('/login', [SessionController::class, 'store']);
 Route::post('/logout', [SessionController::class, 'logout']);
+
+
+//TAGS
+Route::get('/tags/{name}', [TagController::class, 'index']);

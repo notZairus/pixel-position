@@ -4,33 +4,42 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\File;
 
 class RegisterController extends Controller
 {
     function index () {
-        return view('register');
+        return view('auth.register');
     }
 
-    function create() {
+    function create(Request $request) {
 
-        //validate
-        $user = request()->validate([
-            'first-name' => ['required'],
-            'last-name' => ['required'],
-            'email' => ['email', 'required'],
-            'password' => ['required', 'min:7']
+
+        $userInstance = $request->validate([
+            'first_name' => ['required', 'min:3'],
+            'last_name' => ['required', 'min:3'],
+            'email' => ['required', 'email'],
+            'password' => ['required', 'min:7'],
         ]);
 
-        $user['first_name'] = $user['first-name'];
-        unset($user['first-name']);
+        $employerInstance = $request->validate([
+            'employer' => ['required'],
+            'logo' => File::types(['png', 'jpg', 'svg'])
+        ]);
 
-        $user['last_name'] = $user['last-name'];
-        unset($user['last-name']);
+        $user = User::create($userInstance);
 
-        //create user
-        User::create($user);
-        
+        $logoPath = $request->logo->store('logos');
+
+        $user->employer()->create([
+            'name' => $employerInstance['employer'],
+            'logo' => $logoPath
+        ]);
+
+        Auth::login($user);
+
         //redirect to login
-        return redirect('/login');
+        return redirect('/');
     }
 }

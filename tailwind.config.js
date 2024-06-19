@@ -10,8 +10,12 @@ export default {
         "Hanken-grotesk": ['Hanken Grotesk', 'sans-serif']
       },
       fontSize: {
-        "2xs": "10px"
-      }
+        "2xs": "10px",
+        "10xl" : "3rem"
+      },
+      height : {
+        '0.1' : "0.5px"
+      },
     },
   },
   plugins: [],

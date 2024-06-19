@@ -12,7 +12,7 @@ class SessionController extends Model
     use HasFactory;
 
     function index() {
-        return view('login');
+        return view('auth.login');
     }
 
     function store() 
