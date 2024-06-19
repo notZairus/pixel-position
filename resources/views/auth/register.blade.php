@@ -45,10 +45,10 @@
                 <div class="flex space-x-10">
 
                     <div class="sm:col-span-4">
-                    <label for="employer" class="block text-sm font-medium leading-6 text-white">Employer</label>
-                    <div class="mt-2">
-                        <input id="employer" name="employer" type="text" class="block px-2 bg-blue-500/10 outline-none w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    </div>
+                        <label for="employer" class="block text-sm font-medium leading-6 text-white">Employer</label>
+                        <div class="mt-2">
+                            <input id="employer" name="employer" type="text" class="block px-2 bg-blue-500/10 outline-none w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
                     </div>
                     
                     <div class="sm:col-span-4">

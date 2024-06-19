@@ -5,8 +5,8 @@
         <p class="font-bold text-gray-500 text-sm">{{ $job->employer->name }}</p>
     </div>
     <div class="flex flex-col items-center mt-3 mb-4">
-        <a href="/jobs/{{$job->id}}" class="font-bold text-lg w-3/5 text-center flex-1 group-hover:text-blue-500">{{ $job->title }}</a>
-        <a href="/jobs/{{$job->id}}" class="text-xs mt-2 flex">{{ $job->schedule }} : {{ $job->salary }}</a>
+        <a href="{{$job->url}}" target="_blank" class="font-bold text-lg w-3/5 text-center flex-1 group-hover:text-blue-500">{{ $job->title }}</a>
+        <a href="{{$job->url}}" target="_blank" class="text-xs mt-2 flex">{{ $job->schedule }} : {{ $job->salary }}</a>
     </div>
     <div class="items-end flex justify-between mt-auto">
         <div class="flex space-x-1 overflow-ellipsis overflow-hidden text-xs">

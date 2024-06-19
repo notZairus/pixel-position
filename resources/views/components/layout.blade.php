@@ -25,9 +25,8 @@
         <div>
           <ul class="flex space-x-6 text-white text-xs items-center">
             <a href="/" class="{{request()->is('/') ? "text-blue-500 font-extrabold text-sm" : "font-normal"}} hover:text-blue-300"><li>Jobs</li></a>
-            <a href="/" class="{{request()->is('/create') ? "text-blue-500 font-extrabold text-sm" : "font-normal"}} hover:text-blue-300"><li>Create</li></a>
-            <a href="/" class="{{request()->is('/salaries') ? "text-blue-500 font-extrabold text-sm" : "font-normal"}} hover:text-blue-300"><li>Salaries</li></a>
-            <a href="/" class="{{request()->is('/companies') ? "text-blue-500 font-extrabold text-sm" : "font-normal"}} hover:text-blue-300"><li>Companies</li></a>
+            <a href="/create" class="{{request()->is('create') ? "text-blue-500 font-extrabold text-sm" : "font-normal"}} hover:text-blue-300"><li>Post a Job</li></a>
+            <a href="/edit" class="{{request()->is('edit') ? "text-blue-500 font-extrabold text-sm" : "font-normal"}} hover:text-blue-300"><li>Edit a Job</li></a>
           </ul>
         </div>
 
