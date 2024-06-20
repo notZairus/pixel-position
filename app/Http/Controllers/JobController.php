@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use App\Models\Job;
+use App\Models\Tag;
+use Illuminate\Validation\Rules\Can;
 
 class JobController extends Controller
 {
@@ -46,7 +48,7 @@ class JobController extends Controller
     }
 
     function update (Job $job, Request $request) 
-    {
+    {  
         $request->validate([
             'title' => ['required', 'min:3'],
             'salary' => ['required'],
@@ -61,6 +63,22 @@ class JobController extends Controller
         $job->url = $request['url'];
         $job->save();
 
+        //DETACH THE ALL TAGS
+        foreach(explode(', ', $request['past-tags']) as $tagname) {
+            $tag_id = Tag::where(['name' => $tagname])->get()->pluck('id');
+            $job->tags()->detach($tag_id);
+        }
+
+        //ATTACH THE NEW TAGS
+        foreach(explode(', ', $request['tags']) as $tagname) {
+            $job->addTag($tagname);
+        }
+
+        return redirect('/');
+    }
+
+    function delete (Request $request, Job $job) {
+        $job->delete();
         return redirect('/');
     }
 

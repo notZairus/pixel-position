@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Job;
 use App\Models\SessionController;
 use App\Models\Tag;
+use GuzzleHttp\Middleware;
 
 Route::get('/', function () 
 {
@@ -25,11 +26,20 @@ Route::get('/', function ()
 });
 
 //JOBS
-Route::get('/create', [JobController::class, 'index_create'])->middleware('auth');
-Route::get('/edit', [JobController::class, 'index_edit']);
-Route::post('/create', [JobController::class, 'create']);
-Route::get('/edit/{job}', [JobController::class, 'edit']);
-Route::patch('/edit/{job}', [JobController::class, 'update']);
+Route::middleware('auth')->group(function () {
+    Route::get('/create', [JobController::class, 'index_create']);
+    Route::get('/edit', [JobController::class, 'index_edit']);
+    Route::post('/create', [JobController::class, 'create']);
+
+    Route::get('/edit/{job}', [JobController::class, 'edit'])
+    ->can('update', 'job');
+
+    Route::patch('/edit/{job}', [JobController::class, 'update'])
+    ->can('update', 'job');
+
+    Route::delete('/delete/{job}', [JobController::class, 'delete'])
+    ->can('update', 'job');
+});
 
 //REGISTER
 Route::get('/register', [RegisterController::class, 'index']);
@@ -43,4 +53,4 @@ Route::post('/logout', [SessionController::class, 'logout'])->middleware('auth')
 
 
 //TAGS
-Route::get('/tags/{name}', [TagController::class, 'index']);
+Route::get('/tags/{name}', [TagController::class, 'index'])->middleware('auth');
